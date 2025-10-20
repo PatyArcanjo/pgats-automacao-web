@@ -112,7 +112,7 @@ describe('Automation Exercise', () => {
         cy.contains('b','Account Created!') // Verificar se existe o texto na página
     })
 
-    it.only('LOG', () => {
+    it('LOG', () => {
         cy.log(`Nome do Usuário: ${userData.name}`) // exibe no log do cypress o nome que está no arquivo json
         cy.log(userData.email) // exibe no log do cypress o email que está no arquivo json
         cy.log(userData.body) // exibe no log do cypress o body que está no arquivo json

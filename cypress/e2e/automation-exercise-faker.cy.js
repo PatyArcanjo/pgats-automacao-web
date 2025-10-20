@@ -14,7 +14,7 @@ describe('Automation Exercise', () => {
         cy.get('a[href="/login"]').click();
     })
 
-    it.only('Cadastrar Usuário', () => {
+    it('Cadastrar Usuário', () => {
         cy.get('[data-qa="signup-name"]').type(faker.person.fullName());
         cy.get('[data-qa="signup-email"]').type(faker.internet.email());
         cy.contains('button','Signup').click(); // sem id definido buscando pelo texto do botão e que seja do tipo button

@@ -63,7 +63,7 @@ describe('Cadastrar entradas e saídas com bugs', () => {
     
   });
 
-  it.only('Cadastrar uma nova transação de entrada - falha 6', () => {
+  it('Cadastrar uma nova transação de entrada - falha 6', () => {
     cy.visit("https://devfinance-agilizei.netlify.app")
     cy.contains("Nova Transação").click()
     cy.get("#description").type("Mesada")

@@ -18,7 +18,7 @@ describe('Automation Exercise', () => {
         Menu.navegarParaLogin();
     })
 
-    it.only('Cadastrar Usuário', () => {
+    it('Cadastrar Usuário', () => {
         //preencher o formulário de pre cadastro
         formularioPreCadastro();
 
