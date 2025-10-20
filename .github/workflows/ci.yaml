@@ -15,5 +15,15 @@ jobs:
 
       - name: Install dependencies    
         run: npm install
+
       - name: Run Cypress tests
         run: npx cypress run  
+
+      - uses: actions/upload-artifact@v4
+        if: ${{ !cancelled() }}
+        with:
+          name: cypress-report  
+          path: |
+           cypress/reports/mochawesome
+           cypress/videos
+           cypress/screenshots
