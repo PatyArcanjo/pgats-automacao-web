@@ -9,6 +9,15 @@ class Menu {
   efetuarLogout() {
     cy.get('a[href="/logout"]').should('be.visible').click()
   }
+
+   navegarParaFormularioContato() {
+    cy.get('a[href="/contact_us"]').click();
+  }
+
+   navegarParaProdutos() {
+    cy.get('a[href="/products"]').click();
+  }
+
 }
 
 export default new Menu()

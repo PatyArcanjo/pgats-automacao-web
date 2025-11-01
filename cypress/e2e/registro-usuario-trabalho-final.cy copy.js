@@ -1,11 +1,6 @@
 /// <reference types="cypress" />
 
-
-import userData from '../fixtures/example.json'; //importa o arquivo json
-
-
-
-// importando faker
+import userData from '../fixtures/example.json'; 
 import { faker } from '@faker-js/faker';
 
 describe('Automation Exercise', () => {
@@ -43,12 +38,6 @@ describe('Automation Exercise', () => {
         cy.get("input#mobile_number").type(faker.phone.number());
         cy.get('[data-qa="create-account"]').click();
 
-        
-        // triple A - Arrange, Act, Assert
-        // Arrange - organizar / preparar o cenário (dado que, dado que)
-        // Act - agir (quando, quando)
-        // Assert - afirmar (então, então)
-
         // validação
         cy.url().should('includes', '/account_created'); // validação de url, recupera a url da página atual e valida se inclui o texto
         cy.contains('b','Account Created!') // Verificar se existe o texto na página
@@ -58,44 +47,37 @@ describe('Automation Exercise', () => {
         cy.log(`Nome do Usuário: ${userData.name}`) // exibe no log do cypress o nome que está no arquivo json
         cy.log(userData.email) // exibe no log do cypress o email que está no arquivo json
         cy.log(userData.body) // exibe no log do cypress o body que está no arquivo json
-     // REVER ISSO NO VIDEO   cy.log(getrandomNumber()) // exibe no log do cypress o número gerado pela função getrandomNumber que está no arquivo helpers.js
         cy.log(faker.person.fullName());
 
     });
 
-    it('2 - Login do Usuário', () => {
+    it('2 - Login do Usuário com email e senha corretos', () => {
         cy.get('[data-qa="login-email"]').type('QATester1@teste.com');
         cy.get('[data-qa="login-password"]').type('12345');
         cy.get('[data-qa="login-button"]').click();
 
     });
-    it('Login do Usuário Inválido', () => {
+    it('3 - Login do Usuário com email e senhas inválidos', () => {
         cy.url().should('includes', '/login');
-        cy.get('[data-qa="login-email"]').type('QAInvalido@teste.com');
+        cy.get('[data-qa="login-email"]').type('QAInvalidoteste.com');
         cy.get('[data-qa="login-password"]').type('12345');
         cy.get('[data-qa="login-button"]').click();
-
         cy.contains('Your email or password is incorrect!').should('be.visible');
-
     });
 
-    it('3 - Logout do Usuário', () => {
+    it('4 - Logout do Usuário', () => {
         cy.get('[data-qa="login-email"]').type('QATester1@teste.com');
         cy.get('[data-qa="login-password"]').type('12345');
         cy.get('[data-qa="login-button"]').click();
-        //cy.contains(`Logged in as ${tsterUser.name}!`).should('be.visible');
         cy.contains('Logged in as').should('be.visible');
         cy.get('a[href="/logout"]').click();
         cy.url().should('includes', '/login'); 
-
     });
 
-    it('4 - Cadastrar Usuário com email existente no sistema', () => {
+    it('5 - Cadastrar Usuário com email existente no sistema', () => {
         cy.get('[data-qa="signup-name"]').type('QATester1');
         cy.get('[data-qa="signup-email"]').type('QATester1@teste.com');
         cy.contains('button','Signup').click(); // sem id definido buscando pelo texto do botão e que seja do tipo button
         cy.contains('Email Address already exist!').should('be.visible');  
     });
-
-
 })

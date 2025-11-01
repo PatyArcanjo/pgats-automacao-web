@@ -3,9 +3,10 @@
  
 import userData from '../fixtures/example.json'
 
-
+   // before ou beforeEach -> executa antes de cada i
+   
 describe('Enviar formulário de Contato com upload de arquivo', () => {
-    it('Formulário Contact US', () => {      // before ou beforeEach -> executa antes de cada it
+    it('Formulário Contact US', () => {   
         cy. visit('https://www.automationexercise.com/contact_us');
         cy.get('[data-qa="name"]').type(userData.name);
         cy.get('[data-qa="email"]').type(userData.email);

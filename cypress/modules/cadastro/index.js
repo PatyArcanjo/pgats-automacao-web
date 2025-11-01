@@ -34,9 +34,28 @@ export function formularioCadastro() {
         cy.get('[data-qa="zipcode"]').type(faker.location.zipCode());
         cy.get("input#mobile_number").type(faker.phone.number());
         cy.get('[data-qa="create-account"]').click();
+        
+}
+
+export function cadastroUsuarioExistente() {
+    cy.get('[data-qa="signup-name"]').type('QATester1');
+    cy.get('[data-qa="signup-email"]').type('QATester1@teste.com');
+    cy.contains('button','Signup').click(); // sem id definido buscando pelo texto do botão e que seja do tipo button
+    cy.contains('Email Address already exist!').should('be.visible');  
 }
 
 export function validacaoCadastro() {
-        cy.url().should('includes', '/account_created'); // validação de url, recupera a url da página atual e valida se inclui o texto
-        cy.contains('b','Account Created!') // Verificar se existe o texto na página
+    cy.url().should('includes', '/account_created'); // validação de url, recupera a url da página atual e valida se inclui o texto
+    cy.contains('b','Account Created!') // Verificar se existe o texto na página
+    cy.get('[data-qa="continue-button"]').click();
+}
+
+export function verificaUsuarioLogado() {
+    cy.contains('Logged in as').should('be.visible');  
+}
+
+export function apagarContaUsuario() {
+    cy.contains('Logged in as').should('be.visible');
+    cy.get('a[href="/delete_account"]').click();    
+
 }
