@@ -57,5 +57,6 @@ export function verificaUsuarioLogado() {
 export function apagarContaUsuario() {
     cy.contains('Logged in as').should('be.visible');
     cy.get('a[href="/delete_account"]').click();    
+    cy.get('[data-qa="continue-button"]').click();
 
 }

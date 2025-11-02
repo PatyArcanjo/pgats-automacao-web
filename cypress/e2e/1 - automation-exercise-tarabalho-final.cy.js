@@ -12,7 +12,7 @@ import Menu from '../modules/menu/index.js';
 import * as login from '../modules/login/index.js';
 
 //Contato
-import { formularioparaContato , uploadArquivo, validacaoEnvioFormulario } from '../modules/contato/index.js';
+import { formularioparaContato , uploadArquivo, validacaoEnvioFormulario , verificarAssinaturaDaPagina } from '../modules/contato/index.js';
 
 //Produtos
 import { listaTodosProdutos, verProduto , pesquisaProduto} from '../modules/produtos/index.js';
@@ -36,7 +36,7 @@ describe('Automation Exercise', () => {
 
     it('2 - Login do Usuário', () => {
         Menu.navegarParaLogin();
-    formularioPraLogin();
+        login.formularioPraLogin();
 
     });
     it('3 - Login do Usuário com email e senhas inválidos', () => {
@@ -82,9 +82,13 @@ describe('Automation Exercise', () => {
         cadastro.formularioPreCadastro();
         cadastro.formularioCadastro();
         cadastro.validacaoCadastro();
-        //login.verificaUsuarioLogado();
+        login.verificaUsuarioLogado();
         carrinho.adicionarProdutoAoCarrinho(faker.number.int({ min: 1, max: 10 }));
         carrinho.acessarCarrinho();
         carrinho.checkoutCarrinho();
+        carrinho.finalizarCompra();
+        carrinho.preencherDetalhesPagamento();
+        carrinho.confirmarPedidoRealizado();
+        cadastro.apagarContaUsuario();
     });
 })

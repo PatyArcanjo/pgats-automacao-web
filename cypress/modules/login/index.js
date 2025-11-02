@@ -26,6 +26,10 @@ export function logOutUsuario() {
     
 }
 
+export function verificaUsuarioLogado() {
+    cy.contains('Logged in as').should('be.visible');  
+}
+
 
 
  

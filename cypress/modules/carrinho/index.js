@@ -1,3 +1,4 @@
+import { faker } from '@faker-js/faker';
 
 export function adicionarProdutoAoCarrinho(id) {
     cy.get(".product-image-wrapper")
@@ -29,3 +30,24 @@ export function verificarDetalhesPedido() {
     cy.get('.cart_info').find('th').contains('Quantity').should('be.visible');
     cy.get('.cart_info').find('th').contains('Total').should('be.visible'); 
 }
+
+export function finalizarCompra() {
+    cy.get('.form-control').type('Comentário para o pedido'); 
+    cy.contains('a', 'Place Order').click();
+    cy.url().should('include', '/payment'); 
+}  
+
+export function preencherDetalhesPagamento() {
+    cy.get('[name="name_on_card"]').type(faker.person.fullName());
+    cy.get('[name="card_number"]').type(faker.finance.creditCardNumber());
+    cy.get('[name="cvc"]').type('123');
+    cy.get('[name="expiry_month"]').type(faker.date.month({ abbreviated: true }));
+    cy.get('[name="expiry_year"]').type('2025');
+    cy.get('#submit').click();
+}
+    export function confirmarPedidoRealizado() {
+   
+    cy.url().should('include', '/payment_done');    
+    cy.contains('Congratulations! Your order has been confirmed!').should('be.visible');
+}
+

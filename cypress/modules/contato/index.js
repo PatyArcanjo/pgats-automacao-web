@@ -1,3 +1,4 @@
+import { faker } from '@faker-js/faker';
 import userData from '../../fixtures/example.json';
 export function formularioContato() {
 }
