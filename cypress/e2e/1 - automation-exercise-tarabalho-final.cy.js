@@ -2,10 +2,10 @@
 
 import { faker } from '@faker-js/faker';
 
-//Cadastro
+//Cadastro - usando alias
 import * as cadastro from '../modules/cadastro/index.js';
 
-//Menu
+//Menu - usando classe
 import Menu from '../modules/menu/index.js';
 
 //Login
@@ -77,7 +77,7 @@ describe('Automation Exercise', () => {
         verificarAssinaturaDaPagina();
     });
 
-     it.only('15 - Cadastre-se antes de finalizar a compra.', () => {
+     it('15 - Cadastre-se antes de finalizar a compra.', () => {
         Menu.navegarParaLogin();
         cadastro.formularioPreCadastro();
         cadastro.formularioCadastro();

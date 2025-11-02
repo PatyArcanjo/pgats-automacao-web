@@ -5,7 +5,9 @@ export function listaTodosProdutos() {
     //verifica se esta na pagina de produtos
     cy.url().should('include', '/products');    
     //verifica se todos os produtos estão visiveis
-    cy.get('.features_items').find('title texte-center').contains('All Products').should('be.visible');
+    cy.get('.features_items').should('exist');
+    cy.get('h2.title.text-center').should('contain.text', 'All Products').and('be.visible');
+//    cy.contains('h2.title.text-center', 'All Products', { timeout: 10000 }).should('be.visible');
 }
 
 export function verProduto(id) {
