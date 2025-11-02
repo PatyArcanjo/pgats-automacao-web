@@ -27,7 +27,7 @@ describe('Automation Exercise', () => {
         cy.url().should('includes', '/www.automationexercise.com/'); // validação de url, recupera a url da página atual e valida se inclui o texto
     })
 
-    it('Cadastrar Usuário', () => {
+    it('1 - Cadastrar Usuário', () => {
         Menu.navegarParaLogin();
         cadastro.formularioPreCadastro();
         cadastro.formularioCadastro();
