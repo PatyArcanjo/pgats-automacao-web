@@ -68,7 +68,7 @@ describe('Automation Exercise', () => {
         verProduto(1);
     });
 
-    it('9 -Prsquisar Produto', () => {
+    it('9 -Pesquisar Produto', () => {
         Menu.navegarParaProdutos();
         pesquisaProduto('Sleeves Printed Top - White');
     });
