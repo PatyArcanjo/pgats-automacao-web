@@ -17,7 +17,8 @@ jobs:
         run: npm install
 
       - name: Run Cypress test
-        run: npx cypress run 
+        run: npx cypress run --spec "cypress/e2e/1 - automation-exercise-tarabalho-final.cy.js"
+
 
       - uses: actions/upload-artifact@v4
         if: ${{ !cancelled() }}
